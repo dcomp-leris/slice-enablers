@@ -33,11 +33,10 @@ Vagrant.configure("2") do |config|
           chown -R vagrant.vagrant slice-enablers
 
           echo "apt install iperf"
-          bash slice-enablers/apt.sh
+          bash slice-enablers/scripts/apt.sh
 
           echo "iniciando servidor iperf"
-          bash slice-enablers/servidor-iperf.sh
-
+          bash slice-enablers/scripts/servidor-iperf.sh
         SHELL
 
       else
@@ -49,8 +48,7 @@ Vagrant.configure("2") do |config|
           chown -R vagrant.vagrant slice-enablers
 
           echo "apt install iperf"
-          bash slice-enablers/apt.sh
-
+          bash slice-enablers/scripts/apt.sh
         SHELL
           
       end

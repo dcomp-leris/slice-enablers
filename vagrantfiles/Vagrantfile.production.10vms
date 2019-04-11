@@ -13,14 +13,6 @@ Vagrant.configure("2") do |config|
       vb.memory = "512"
       vb.cpus = "1"
     end
-  
-#    vm01.vm.provision "shell", inline: <<-SHELL
-#      echo "NECOS: git cloning necos.git"
-#      git clone https://github.com/dcomp-leris/necos.git --quiet
-#      if [ $? -ne 0 ]; then echo "NECOS: error"; fi
-#      chown -R vagrant.vagrant necos
-#
-#    SHELL
   end
 ############### end vm01 block ###############
 
@@ -34,14 +26,6 @@ Vagrant.configure("2") do |config|
       vb.memory = "512"
       vb.cpus = "1"
     end
-  
-#    vm02.vm.provision "shell", inline: <<-SHELL
-#      echo "NECOS: git cloning necos.git"
-#      git clone https://github.com/dcomp-leris/necos.git --quiet
-#      if [ $? -ne 0 ]; then echo "NECOS: error"; fi
-#      chown -R vagrant.vagrant necos
-#
-#    SHELL
   end
 ############### end vm02 block ###############
 
@@ -55,14 +39,6 @@ Vagrant.configure("2") do |config|
       vb.memory = "512"
       vb.cpus = "1"
     end
-  
-#    vm03.vm.provision "shell", inline: <<-SHELL
-#      echo "NECOS: git cloning necos.git"
-#      git clone https://github.com/dcomp-leris/necos.git --quiet
-#      if [ $? -ne 0 ]; then echo "NECOS: error"; fi
-#      chown -R vagrant.vagrant necos
-#
-#    SHELL
   end
 ############### end vm03 block ###############
 
@@ -76,14 +52,6 @@ Vagrant.configure("2") do |config|
       vb.memory = "512"
       vb.cpus = "1"
     end
-  
-#    vm04.vm.provision "shell", inline: <<-SHELL
-#      echo "NECOS: git cloning necos.git"
-#      git clone https://github.com/dcomp-leris/necos.git --quiet
-#      if [ $? -ne 0 ]; then echo "NECOS: error"; fi
-#      chown -R vagrant.vagrant necos
-#
-#    SHELL
   end
 ############### end vm04 block ###############
 
@@ -97,14 +65,6 @@ Vagrant.configure("2") do |config|
       vb.memory = "512"
       vb.cpus = "1"
     end
-  
-#    vm05.vm.provision "shell", inline: <<-SHELL
-#      echo "NECOS: git cloning necos.git"
-#      git clone https://github.com/dcomp-leris/necos.git --quiet
-#      if [ $? -ne 0 ]; then echo "NECOS: error"; fi
-#      chown -R vagrant.vagrant necos
-#
-#    SHELL
   end
 ############### end vm05 block ###############
 
@@ -118,14 +78,6 @@ Vagrant.configure("2") do |config|
       vb.memory = "512"
       vb.cpus = "1"
     end
-  
-#    vm06.vm.provision "shell", inline: <<-SHELL
-#      echo "NECOS: git cloning necos.git"
-#      git clone https://github.com/dcomp-leris/necos.git --quiet
-#      if [ $? -ne 0 ]; then echo "NECOS: error"; fi
-#      chown -R vagrant.vagrant necos
-#
-#    SHELL
   end
 ############### end vm06 block ###############
 
@@ -139,14 +91,6 @@ Vagrant.configure("2") do |config|
       vb.memory = "512"
       vb.cpus = "1"
     end
-  
-#    vm07.vm.provision "shell", inline: <<-SHELL
-#      echo "NECOS: git cloning necos.git"
-#      git clone https://github.com/dcomp-leris/necos.git --quiet
-#      if [ $? -ne 0 ]; then echo "NECOS: error"; fi
-#      chown -R vagrant.vagrant necos
-#
-#    SHELL
   end
 ############### end vm07 block ###############
 
@@ -160,14 +104,6 @@ Vagrant.configure("2") do |config|
       vb.memory = "512"
       vb.cpus = "1"
     end
-  
-#    vm08.vm.provision "shell", inline: <<-SHELL
-#      echo "NECOS: git cloning necos.git"
-#      git clone https://github.com/dcomp-leris/necos.git --quiet
-#      if [ $? -ne 0 ]; then echo "NECOS: error"; fi
-#      chown -R vagrant.vagrant necos
-#
-#    SHELL
   end
 ############### end vm08 block ###############
 
@@ -181,14 +117,6 @@ Vagrant.configure("2") do |config|
       vb.memory = "512"
       vb.cpus = "1"
     end
-  
-#    vm09.vm.provision "shell", inline: <<-SHELL
-#      echo "NECOS: git cloning necos.git"
-#      git clone https://github.com/dcomp-leris/necos.git --quiet
-#      if [ $? -ne 0 ]; then echo "NECOS: error"; fi
-#      chown -R vagrant.vagrant necos
-#
-#    SHELL
   end
 ############### end vm09 block ###############
 
@@ -202,14 +130,6 @@ Vagrant.configure("2") do |config|
       vb.memory = "512"
       vb.cpus = "1"
     end
-  
-#    vm10.vm.provision "shell", inline: <<-SHELL
-#      echo "NECOS: git cloning necos.git"
-#      git clone https://github.com/dcomp-leris/necos.git --quiet
-#      if [ $? -ne 0 ]; then echo "NECOS: error"; fi
-#      chown -R vagrant.vagrant necos
-#
-#    SHELL
   end
 ############### end vm10 block ###############
 
