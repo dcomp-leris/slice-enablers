@@ -1,0 +1,63 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+NODES = [
+    { :hostname => "node1", :ip => "192.168.0.11" },
+    { :hostname => "node2", :ip => "192.168.0.12" },
+    { :hostname => "controller", :ip => "192.168.0.2" }
+]
+
+Vagrant.configure("2") do |config|
+
+  # Do whatever global config here
+  config.vm.box = "ubuntu/bionic64"
+
+  NODES.each do |node|
+  
+    config.vm.define node[:hostname] do |nodeconfig|
+  
+      # Do config that is the same across each node
+      nodeconfig.vm.hostname = node[:hostname]
+      nodeconfig.vm.network "public_network", bridge: "eno1"
+      nodeconfig.vm.network "private_network", ip: node[:ip]
+      nodeconfig.vm.provision "shell", inline: <<-SHELL
+        echo -e "\n192.168.0.2 controller\n192.168.0.11 node1\n192.168.0.12 node2" | sudo tee -a /etc/hosts
+      SHELL
+  
+      if node[:hostname] == "controller"
+        # Do your provisioning for this machine here
+        nodeconfig.vm.provision "shell", inline: <<-SHELL
+	  echo "Controller"
+          echo "git cloning slice-enablers.git"
+          git clone https://github.com/dcomp-leris/slice-enablers.git --quiet
+          chown -R vagrant.vagrant slice-enablers
+
+          echo "apt install iperf"
+          bash slice-enablers/apt.sh
+
+          echo "iniciando servidor iperf"
+          bash slice-enablers/servidor-iperf.sh
+
+        SHELL
+
+      else
+        # Do provisioning for the other machines here
+        nodeconfig.vm.provision "shell", inline: <<-SHELL
+	  echo "Node"
+          echo "git cloning slice-enablers.git"
+          git clone https://github.com/dcomp-leris/slice-enablers.git --quiet
+          chown -R vagrant.vagrant slice-enablers
+
+          echo "apt install iperf"
+          bash slice-enablers/apt.sh
+
+        SHELL
+          
+      end
+  
+    end
+  
+  end
+  # Do any global provisioning
+
+end

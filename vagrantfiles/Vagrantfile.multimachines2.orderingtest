@@ -1,0 +1,17 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/bionic64"
+  config.vm.provision :shell, inline: "echo A"
+
+  config.vm.define "vm1" do |vm1|
+    vm1.vm.provision :shell, inline: "echo B"
+  end
+
+#  config.vm.define "vm2" do |vm2|
+#    vm2.vm.provision :shell, inline: "echo C"
+#  end
+
+  config.vm.provision :shell, inline: "echo D"
+end
