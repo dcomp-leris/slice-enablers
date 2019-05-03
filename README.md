@@ -1,37 +1,13 @@
-## Welcome to GitHub Pages
+## CCS012 – TÓPICOS AVANÇADOS EM ARQUITETURAS DISTRIBUÍDAS DE SOFTWARE
 
-You can use the [editor on GitHub](https://github.com/dcomp-leris/slice-enablers/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+### Tema: Cloud Network Slicing: conceitos, fundamentos e tecnologias habilitadoras
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Prof. Dr. Fabio Verdi
 
-### Markdown
+Auxiliares: Paulo Ditarso e André Beltrami.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Terça-feira das 08:00 às 12:00
 
-```markdown
-Syntax highlighted code block
+Lab Redes (ATLab 105)
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/dcomp-leris/slice-enablers/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+**Ementa**: Nesta disciplina iremos abordar um tema atual, conhecido como Cloud Network Slicing. Pretendemos apresentar os conceitos e os fundamentos sobre o assunto, posicionar o estado da arte e as padronizações existentes principalmente as definidas no contexto do Projeto NECOS e orgãos de padronização tais como IETF, ETSI, ONF e 3GPP. Estudaremos algumas tecnologias habilitadoras para implantação de cloud network slices tais como: VIMs (Virtual Infrastructure Managers), Docker, Kubernets e Openstack, SDN (Software Defined Networking) e finalmente soluções de monitoramento que podem ser aplicadas no contexto das slices tais como o framework Prometheus.
