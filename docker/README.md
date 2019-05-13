@@ -1,29 +1,12 @@
 ## Primeiros passos com Docker 
 
-You can use the [editor on GitHub](https://github.com/dcomp-leris/slice-enablers/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Esta página é dedicada a instalação e configuração do Docker no Ubuntu.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+A maioria dos passos de configuração foi retirada do [site oficial](https://docs.docker.com/), que também contém maiores detalhes de configuração e uso do Docker.
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Instalação do Docker no Ubuntu
 
 ```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+$ sudo apt-get update
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
