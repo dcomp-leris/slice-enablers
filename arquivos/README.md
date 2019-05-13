@@ -1,5 +1,9 @@
 ## Arquivos necessários para acessar as VMs
 
+## Descrição dos arquivos
+
+## Nota sobre o Protocolo SSH
+
 Esta página contém os arquivos necessários para acessar as VMs na Cloud UFSCar, utilizando para isto o [Protocolo SSH](https://tools.ietf.org/html/rfc4254).
 
 SSH é um importante protocolo para acesso remoto a outras máquinas, possibilitando a administração remota de servidores em outras localidades.
