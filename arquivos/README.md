@@ -17,7 +17,13 @@ O SSH não é foco desta disciplina e um detalhamento melhor da sua utilização
 
 Além de ser até [famoso](https://i.redd.it/qhs5v36qvnr11.jpg)!!! :)
 
-## Welcome to GitHub Pages
+## Script para acessar a VM
+
+```markdown
+#!/bin/bash
+
+ssh -i cloud_ufscar_rsa.dms ubuntu@`cat lista-vms.txt | grep -w vm-$1 | cut -d " " -f 3`
+```
 
 You can use the [editor on GitHub](https://github.com/dcomp-leris/slice-enablers/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
