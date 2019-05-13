@@ -2,7 +2,9 @@
 
 Esta página é dedicada a instalação e configuração do Docker no Ubuntu.
 
-A maioria dos passos de configuração foi retirada do [site oficial](https://docs.docker.com/), que também contém maiores detalhes de configuração e uso do Docker.
+A maioria dos passos de instalação foi retirada do [site oficial](https://docs.docker.com/), que também contém maiores detalhes de configuração e uso do Docker.
+
+Com relação aos exemplos de utilização do Docker, a maioria dos exemplos foi retirada do [free lab](https://training.play-with-docker.com).
 
 ## Instalação do Docker no Ubuntu
 
@@ -33,3 +35,6 @@ $ sudo apt update
 ```markdown
 $ sudo apt -y install docker-ce docker-ce-cli containerd.io
 ```
+
+## Utilizando o Docker
+
