@@ -9,11 +9,11 @@ A maioria dos passos de configuração foi retirada do [site oficial](https://do
 ### Configurando o repositório
 
 ```markdown
-$ sudo apt-get update
+$ sudo apt update
 ```
 
 ```markdown
-$ sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+$ sudo apt -y install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
 ```
 
 ```markdown
@@ -27,9 +27,9 @@ $ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ub
 ### Instalação do Docker CE
 
 ```markdown
-$ sudo apt-get update
+$ sudo apt update
 ```
 
 ```markdown
-$ sudo apt-get install docker-ce docker-ce-cli containerd.io
+$ sudo apt -y install docker-ce docker-ce-cli containerd.io
 ```
