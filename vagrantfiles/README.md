@@ -4,6 +4,8 @@
 
 Vários arquivos com cenários distintos que serão explicados ao longo desta página.
 
+A maioria destes exemplos de configuração foi retirada do próprio site do [Vagrant](https://vagrantup.com).
+
 ## Nota sobre o Protocolo SSH
 
 Esta página contém os arquivos necessários para acessar as VMs na Cloud UFSCar, utilizando para isto o [Protocolo SSH](https://tools.ietf.org/html/rfc4254).
