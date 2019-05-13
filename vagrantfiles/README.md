@@ -6,26 +6,36 @@ Vários arquivos com cenários distintos que serão explicados ao longo desta p�
 
 A maioria destes exemplos de configuração foi retirada do próprio site do [Vagrant](https://vagrantup.com).
 
-## Nota sobre o Protocolo SSH
+## Iniciando com o Vagrant
 
-Esta página contém os arquivos necessários para acessar as VMs na Cloud UFSCar, utilizando para isto o [Protocolo SSH](https://tools.ietf.org/html/rfc4254).
-
-SSH é um importante protocolo para acesso remoto a outras máquinas, possibilitando a administração remota de servidores em outras localidades.
-
-O SSH não é foco desta disciplina e um detalhamento melhor da sua utilização pode ser encontrado [aqui](https://www.openssh.com).
-
-Além de ser até [famoso](https://i.redd.it/qhs5v36qvnr11.jpg)!!! :)
-
-## Script para acessar a VM
-
-### acessar.sh
 ```markdown
-#!/bin/bash
-
-ssh -i cloud_ufscar_rsa.dms ubuntu@`cat lista-vms.txt | grep -w vm-$1 | cut -d " " -f 3`
+$ vagrant init ubuntu/bionic64
+A `Vagrantfile` has been placed in this directory. You are now
+ready to `vagrant up` your first virtual environment! Please read
+the comments in the Vagrantfile as well as documentation on
+`vagrantup.com` for more information on using Vagrant.
+$
 ```
 
-### Exemplo de como usar o script
+### cat acessar.sh
 ```markdown
-$ bash acessar.sh NUMERO_DO_GRUPO
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# All Vagrant configuration is done below. The "2" in Vagrant.configure
+# configures the configuration version (we support older styles for
+# backwards compatibility). Please don't change it unless you know what
+# you're doing.
+Vagrant.configure("2") do |config|
+  # The most common configuration options are documented and commented below.
+  # For a complete reference, please see the online documentation at
+  # https://docs.vagrantup.com.
+
+  # Every Vagrant development environment requires a box. You can search for
+  # boxes at https://vagrantcloud.com/search.
+  config.vm.box = "ubuntu/bionic64"
+
+...
+end
 ```
+
