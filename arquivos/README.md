@@ -2,7 +2,7 @@
 
 ## Descrição dos arquivos
 
-- acessar.sh script para acesso a uma VM na Cloud UFSCar
+- **acessar.sh** script para acesso a uma VM na Cloud UFSCar
 - cloud_ufscar_rsa.dms chave privada para acesso SSH
 - cloud_ufscar_rsa.pub chave pública para acesso SSH
 - lista-vms.txt lista de endereços IPs das VMs
