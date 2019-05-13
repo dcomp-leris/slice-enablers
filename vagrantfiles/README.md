@@ -9,7 +9,7 @@ A maioria destes exemplos de configuração foi retirada do próprio site do [Va
 ## Instalação do Virtualbox e do Vagrant
 
 ```markdown
-$ sudo apt update; sudo apt -y upgrade
+$ sudo apt update
 ...
 $ sudo apt -y install virtualbox
 ...
