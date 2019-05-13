@@ -1,4 +1,4 @@
-# Arquivos necessários para acessar as VMs
+# Explicando virtualização com o auxílio do Vagrant
 
 ## Descrição dos arquivos
 
