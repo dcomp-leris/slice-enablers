@@ -15,6 +15,8 @@ SSH é um importante protocolo para acesso remoto a outras máquinas, possibilit
 
 O SSH não é foco desta disciplina e um detalhamento melhor da sua utilização pode ser encontrado [aqui](https://www.openssh.com).
 
+Teste de ![figura](https://i.redd.it/qhs5v36qvnr11.jpg).
+
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/dcomp-leris/slice-enablers/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
