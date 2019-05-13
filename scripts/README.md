@@ -1,5 +1,10 @@
 # Arquivos necessários para acessar as VMs
 
+## Como utilizar os scripts
+```markdown
+$ bash NOME_DO_SCRIPT
+```
+
 ## Descrição dos arquivos
 
 ### apt.sh (script para instalação do IPerf)
@@ -22,9 +27,4 @@ iperf -c controller -t $1
 #!/bin/bash
 
 sudo iperf -s -D > iperf.log
-```
-
-## Como utilizar os scripts
-```markdown
-$ bash NOME_DO_SCRIPT
 ```
