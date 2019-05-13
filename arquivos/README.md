@@ -2,6 +2,11 @@
 
 ## Descrição dos arquivos
 
+- acessar.sh script para acesso a uma VM na Cloud UFSCar
+- cloud_ufscar_rsa.dms chave privada para acesso SSH
+- cloud_ufscar_rsa.pub chave pública para acesso SSH
+- lista-vms.txt lista de endereços IPs das VMs
+
 ## Nota sobre o Protocolo SSH
 
 Esta página contém os arquivos necessários para acessar as VMs na Cloud UFSCar, utilizando para isto o [Protocolo SSH](https://tools.ietf.org/html/rfc4254).
