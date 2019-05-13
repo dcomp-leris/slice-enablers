@@ -1,4 +1,4 @@
-# Arquivos necessários para acessar as VMs
+# Scripts utilizados no cenário de geração de tráfego
 
 ## Como utilizar os scripts
 ```markdown
