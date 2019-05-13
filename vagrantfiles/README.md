@@ -6,6 +6,17 @@ Vários arquivos com cenários distintos que serão explicados ao longo desta p�
 
 A maioria destes exemplos de configuração foi retirada do próprio site do [Vagrant](https://vagrantup.com).
 
+## Instalação do Virtualbox e do Vagrant
+
+```markdown
+$ sudo apt update; sudo apt -y upgrade
+...
+$ sudo apt -y install virtualbox
+...
+$ sudo apt -y install vagrant
+...
+```
+
 ## Iniciando com o Vagrant
 
 ```markdown
