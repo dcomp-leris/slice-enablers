@@ -17,7 +17,7 @@ the comments in the Vagrantfile as well as documentation on
 $
 ```
 
-### cat acessar.sh
+### Vagrantfile original (Vagrantfile.original)
 ```markdown
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
@@ -41,7 +41,7 @@ end
 
 ## Cenário com múltiplas VMs
 
-### Introdutório
+### Introdutório (Vagrantfile.multimachines1.intro)
 
 ```markdown
 # -*- mode: ruby -*-
@@ -60,7 +60,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-### A ordem é importante
+### A ordem é importante (Vagrantfile.multimachines2.orderingtest)
 
 ```markdown
 # -*- mode: ruby -*-
@@ -82,7 +82,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-### Não levantar VM automaticamente
+### Não levantar VM automaticamente (Vagrantfile.multimachines3.autostart)
 
 ```markdown
 # -*- mode: ruby -*-
@@ -101,7 +101,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-### Criar várias VMs com loop
+### Criar várias VMs com loop (Vagrantfile.multimachines4.loop)
 
 ```markdown
 # -*- mode: ruby -*-
@@ -121,7 +121,7 @@ end
 
 ## Cenários com configurações de rede
 
-### Cenário introdutório
+### Cenário introdutório (Vagrantfile.network1.intro)
 
 ```markdown
 # -*- mode: ruby -*-
@@ -136,7 +136,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-### Criar máquinas em rede com loop
+### Criar máquinas em rede com loop (Vagrantfile.network2.loop)
 
 ```markdown
 # -*- mode: ruby -*-
@@ -161,7 +161,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-### Criar máquinas em rede com definição de cluster
+### Criar máquinas em rede com definição de "cluster" (Vagrantfile.network3.cluster)
 
 ```markdown
 # -*- mode: ruby -*-
@@ -198,7 +198,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 end # end config
 ```
 
-### Cenário de geração de tráfego
+### Cenário de geração de tráfego (Vagrantfile.network4.trafficgen)
 
 ```markdown
 # -*- mode: ruby -*-
