@@ -38,3 +38,82 @@ $ sudo apt -y install docker-ce docker-ce-cli containerd.io
 
 ## Utilizando o Docker
 
+```markdown
+$ sudo docker run hello-world
+```
+
+```markdown
+$ sudo docker container ls
+```
+
+```markdown
+$ sudo docker container ls -a
+```
+
+```markdown
+$ sudo docker image ls
+```
+
+```markdown
+$ sudo docker image pull alpine
+```
+
+```markdown
+$ sudo docker run alpine ls -l
+```
+
+```markdown
+$ sudo docker run alpine echo "aloh mundo de dentro do alpine"
+```
+
+```markdown
+$ sudo docker run alpine /bin/sh
+```
+
+```markdown
+$ sudo docker run -it alpine /bin/sh
+```
+
+### Exemplo de isolamento
+
+```markdown
+$ sudo docker run -it alpine /bin/ash
+/ # echo "Aloh mundo!!!" > hello.txt
+/ # ls
+...
+/ # exit
+```
+```markdow
+$ sudo docker run alpine ls
+```
+
+```markdown
+$ sudo docker container ls -a
+```
+
+```markdown
+$ sudo docker container start <CONTAINER_ID>
+```
+
+```markdown
+$ sudo docker container ls
+```
+
+```markdown
+$ sudo docker container exec <CONTAINER_ID> ls
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
