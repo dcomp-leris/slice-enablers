@@ -154,9 +154,35 @@ $ sudo docker run ourfiglet figlet "Aloh classe!"
 
 ### Criando imagens com um Dockerfile
 
+Copiar as 3 linhas abaixo e colar no terminal, depois digitar ENTER
 ```markdown
-$ echo 'var os = require("os");' >> index.js
-$ echo 'var hostname = os.hostname();' >> index.js
-$ echo 'console.log("hello from " + hostname);' >> index.js
+echo 'var os = require("os");' >> index.js
+echo 'var hostname = os.hostname();' >> index.js
+echo 'console.log("aloh mundo de dentro da imagem " + hostname);' >> index.js
+```
+
+```markdown
 $ cat index.js
+```
+
+Copiar as 5 linhas abaixo e colar no terminal, depois digitar ENTER
+```markdown
+echo 'FROM alpine' >> Dockerfile
+echo 'RUN apk update && apk add nodejs' >> Dockerfile
+echo 'COPY . /app' >> Dockerfile
+echo 'WORKDIR /app' >> Dockerfile
+echo 'CMD ["node","index.js"]' >> Dockerfile
+```
+
+```markdown
+$ cat Dockerfile
+```
+
+Vamos criar uma primeira imagem a partir deste Dockerfile denominada hello:v0.1
+```markdown
+$ sudo docker build -t hello:v0.1 .
+```
+
+```markdown
+$ sudo docker run hello:v0.1
 ```
