@@ -18,4 +18,5 @@ Lab Redes (ATLab 105)
 $ cd ~
 $ git clone https://github.com/dcomp-leris/slice-enablers.git
 $ cd slice-enablers
+$ chmod 400 arquivos/cloud_ufscar_rsa.dms
 ```
