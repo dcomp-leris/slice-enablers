@@ -158,7 +158,7 @@ Copiar as 3 linhas abaixo e colar no terminal, digitar ENTER ao final
 ```markdown
 echo 'var os = require("os");' >> index.js
 echo 'var hostname = os.hostname();' >> index.js
-echo 'console.log("aloh mundo de dentro da imagem " + hostname);' >> index.js
+echo 'console.log("aloh mundo de dentro do container " + hostname);' >> index.js
 ```
 
 ```markdown
