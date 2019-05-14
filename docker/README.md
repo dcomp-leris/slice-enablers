@@ -92,7 +92,7 @@ $ sudo docker container ls -a
 ```
 
 ```markdown
-$ sudo docker container start <CONTAINER_ID>
+$ sudo docker start <CONTAINER_ID>
 ```
 
 ```markdown
@@ -100,13 +100,16 @@ $ sudo docker container ls
 ```
 
 ```markdown
-$ sudo docker container exec <CONTAINER_ID> ls
+$ sudo docker exec <CONTAINER_ID> ls
 ```
 
+```markdown
+$ sudo docker stop <CONTAINER_ID>
+```
 
-
-
-
+```markdown
+$ sudo docker rm <CONTAINER_ID>
+```
 
 
 
