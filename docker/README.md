@@ -186,3 +186,19 @@ $ sudo docker build -t hello:v0.1 .
 ```markdown
 $ sudo docker run hello:v0.1
 ```
+
+```markdown
+$ sudo docker image ls
+```
+
+```markdown
+$ sudo docker image history IMAGE_ID
+```
+
+```markdow
+$ echo 'console.log("esta eh a v0.2");' >> index.js
+```
+
+```markdown
+$ sudo docker build -t hello:v0.2 .
+```
