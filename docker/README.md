@@ -92,7 +92,7 @@ $ sudo docker container ls -a
 ```
 
 ```markdown
-$ sudo docker start <CONTAINER_ID>
+$ sudo docker start CONTAINER_ID
 ```
 
 ```markdown
@@ -100,23 +100,63 @@ $ sudo docker container ls
 ```
 
 ```markdown
-$ sudo docker exec <CONTAINER_ID> ls
+$ sudo docker exec CONTAINER_ID ls
 ```
 
 ```markdown
-$ sudo docker stop <CONTAINER_ID>
+$ sudo docker stop CONTAINER_ID
 ```
 
 ```markdown
-$ sudo docker rm <CONTAINER_ID>
+$ sudo docker rm CONTAINER_ID
 ```
 
+### Customizando imagens Docker
 
+```markdown
+$ sudo docker run -ti ubuntu bash
+# apt update
+...
+# apt install -y figlet
+...
+# figlet "aloh mundo!"
+...
+# exit
+```
 
+```markdown
+$ sudo docker container ls -a
+```
 
+```markdown
+$ sudo docker diff CONTAINER_ID
+```
 
+```markdown
+$ sudo docker commit CONTAINER_ID
+```
 
+```markdown
+$ sudo docker image ls
+```
 
+```markdown
+$ sudo docker image tag IMAGE_ID ourfiglet
+```
 
+```markdown
+$ sudo docker image ls
+```
 
+```markdown
+$ sudo docker run ourfiglet figlet "Aloh classe!"
+```
 
+### Criando imagens com um Dockerfile
+
+```markdown
+$ echo 'var os = require("os");' >> index.js
+$ echo 'var hostname = os.hostname();' >> index.js
+$ echo 'console.log("hello from " + hostname);' >> index.js
+$ cat index.js
+```
