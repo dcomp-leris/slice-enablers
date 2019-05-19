@@ -1,0 +1,41 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# All Vagrant configuration is done below. The "2" in Vagrant.configure
+# configures the configuration version (we support older styles for
+# backwards compatibility). Please don't change it unless you know what
+# you're doing.
+Vagrant.configure(2) do |config|
+  config.vm.define "containerhost01" do |containerhost01|
+
+ 	containerhost01.vm.box = "ubuntu/bionic64"
+ 	containerhost01.vm.network "forwarded_port", guest: 9000, host: 9001
+  	containerhost01.vm.network "public_network"
+  	containerhost01.vm.hostname = "containerhost01"
+  	containerhost01.vm.provider "virtualbox" do |vb|
+      		vb.memory = "4096"
+    	  	vb.name = "containerhost01"
+  	end
+end
+config.vm.define "containerhost02" do |containerhost02|
+
+ 	containerhost02.vm.box = "ubuntu/bionic64"
+  	containerhost02.vm.network "public_network"
+  	containerhost02.vm.hostname = "containerhost02"
+  	containerhost02.vm.provider "virtualbox" do |vb|
+      		vb.memory = "1500"
+    	  	vb.name = "containerhost02"
+  	end
+end
+config.vm.define "containerhost03" do |containerhost03|
+
+ 	containerhost03.vm.box = "ubuntu/bionic64"
+  	containerhost03.vm.network "public_network"
+  	containerhost03.vm.hostname = "containerhost03"
+  	containerhost03.vm.provider "virtualbox" do |vb|
+      		vb.memory = "1500"
+    	  	vb.name = "containerhost03"
+  	end
+  
+end
+end
