@@ -6,7 +6,7 @@ Passo a Passo do Hands-On de Docker Swarm e Kubernetes para a disciplina de Tóp
 ## Hands-On 1: Docker Swarm
 Neste primeiro Hands-On iremos instalar e testar o Docker com o Docker Swarm num ambiente Multi-Node, composto por 1 Master e 2 Workers. 
 
-##### Este tutorial foi adaptado de: https://www.profissionaisti.com.br/2017/07/portainer-orquestrando-containers-em-um-cluster-docker-swarm/](https://www.profissionaisti.com.br/2017/07/portainer-orquestrando-containers-em-um-cluster-docker-swarm/)
+##### Este tutorial foi adaptado de: https://www.profissionaisti.com.br/2017/07/portainer-orquestrando-containers-em-um-cluster-docker-swarm/
 
 ### Passo 1: 
 Clonar deste repositório o VagrantFile que será utilizado. 
