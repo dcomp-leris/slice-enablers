@@ -6,169 +6,154 @@ Passo a Passo do Hands-On de Docker Swarm e Kubernetes para a disciplina de Tóp
 ## Hands-On 2: Kubernetes (Minikube)
 Neste primeiro Hands-On iremos instalar e testar VIM Kubernetes usando a sua implementação de testes Minikube. 
 
-##### Este tutorial foi adaptado de: https://www.profissionaisti.com.br/2017/07/portainer-orquestrando-containers-em-um-cluster-docker-swarm/
+##### Este tutorial foi adaptado de: https://medium.com/@claudiopro/getting-started-with-kubernetes-via-minikube-ada8c7a29620
 
 ### Passo 1: 
-Clonar deste repositório o VagrantFile que será utilizado. 
+Vamos utilizar a mesma VM que criamos anteriormente, a VM containerhost01.
+As outras podemos desligar.
 
 ```markdown
-$ git clone https://github.com/dcomp-leris/slice-enablers.git
-$ cd slice-enablers/aula2
-$ vagrant status 
+$ vagrant halt containerhost02
+$ vagrant halt containerhost03
 ```
 
 ### Passo 2:
-Vamos olhar o conteúdo do Vagrantfile que iremos utilizar e então iniciar as VMs.
+Instalação do Minikube.
 
 ```markdown
-$ vi Vagrantfile
-$ vagrant up 
+$ wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+$ chmod +x minikube-linux-amd64
+$ sudo mv minikube-linux-amd64 /usr/local/bin/minikube
 ```
 
 ### Passo 3:
-Abram três terminais, loguem na VM referente ao grupo de vocês. 
-Acessem cada uma das VMs criadas via Vagrantfile. 
+Instalação do kubectl.
 
 ```markdown
-$ vagrant ssh containerhost01
-$ vagrant ssh containerhost02
-$ vagrant ssh containerhost03
+$ curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+$ echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+$ sudo apt update
+$ sudo apt -y install kubectl
+```
+
+Para checar a instalação execute:
+
+```markdown
+$ minikube version
+$ kubectl version
 ```
 
 ### Passo 4:
-Instalação do Docker em cada uma das três VMs.
+Iniciando o Minikube.
 
 ```markdown
-$ sudo apt update
-$ sudo apt upgrade
-$ sudo apt -y install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
-$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-$ sudo apt-key fingerprint 0EBFCD88
-$ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-$ sudo apt update
-$ sudo apt -y install docker-ce docker-ce-cli containerd.io
-$ sudo systemctl start docker
-$ sudo systemctl enable docker
-$ sudo gpasswd -a "${USER}" docker
+$ sudo minikube start --memory=4096 --vm-driver=none --extra-config=kubelet.resolv-conf=/run/systemd/resolve/resolv.conf
+$ sudo kubectl get pod --all-namespaces
+
 ```
 
 ### Passo 5: 
-Reiniciar as VMs do vagrant. No terminal do containerhost01, digite: 
+Fazendo o deployment de uma pod.
 
 ```markdown
-$ exit
-$ vagrant halt
-$ vagrant up
+$ kubectl run hello-minikube --image=gcr.io/google_containers/echoserver:1.4 --port=8080
+deployment "hello-minikube" created
+$ kubectl get pods
+$ kubectl get deployments
 ```
 
 ### Passo 6:
-Após as VMs terem sido reiniciadas, logue novamente nas três (containerhost01, containerhost02 e containerhost03)
-Checando a instalação do Docker e vendo o IP que as VMs iniciaram. **Anotem estes IPs**!
+Expondo o Serviço.
 
 ```markdown
-$ docker ps  -a
-$ docker info
-$ ip a
+$ kubectl expose deployment hello-minikube --type=NodePort
+service "hello-minikube" exposed
+$ kubectl get services
 ```
 
 ### Passo 7:
-Iniciando o Docker Swarm Master no **containerhost01** 
+Testando o serviço criado
+
 
 ```markdown
-$ docker swarm init --advertise-addr <IP DO containerhost01>:2377
-```
-Este comando irá gerar uma saída muito parecida com o comando abaixo. 
-**Cada grupo terá uma saída diferente. Guardem este comando.**
-
-```markdown
-$ docker swarm join –token SWMTKN-1-41eozb4h6ucm58pwv6zxvllhggniv6kbo92hyyhja9z07whmtb-62q0t8pc373ff576xlbxp8bjj <IP DO Master:Porta>
+$ minikube service hello-minikube --url http://<IP DO containerhost01>:31226
+$ curl $(sudo minikube service hello-minikube --url)
 ```
 
 ### Passo 8:
-Adicionar os Workers no Cluster. Execute o comando gerado acima nas máquinas containerhost02 e containerhost03
-A seguinte mensagem deve aparecer: 
-
+Encerrando o serviço e o deployment.
 
 ```markdown
-$ docker swarm join –token SWMTKN-1-41eozb4h6ucm58pwv6zxvllhggniv6kbo92hyyhja9z07whmtb-62q0t8pc373ff576xlbxp8bjj <IP DO Master:Porta>
-
-This node joined a swarm as a worker.
+$ kubectl delete service,deployment hello-minikube
+$ kubectl get pods
+$ kubectl get services
 ```
 
 ### Passo 9:
-Checando a criação dos Nodes. Digite no terminal do **containerhost01**.
+Criando uma aplicação JS para rodar no nosso cluster kubernetes (minikube)
 
 ```markdown
-$ docker node ls	
-$ docker node inspect
+$ mkdir hello-node && cd hello-node && touch Dockerfile server.js
+$ vi server.js
+
+var http = require('http');
+var handleRequest = function(request, response) {
+  response.writeHead(200);
+  response.end('Alou Mundo da Turma de Topicos em Redes!');
+};
+var helloServer = http.createServer(handleRequest);
+helloServer.listen(8080);
 ```
 
 ### Passo 10:
-Criando uma Rede para este nosso Cluster no **containerhost01**.
+Criando a imagem a partir de um DockerFile
+
 
 ```markdown
-$ docker network create -d overlay --subnet 10.0.10.0/24 ClusterNet
-$ docker network ls 
+$ vi Dockerfile
+
+FROM node:4.4
+EXPOSE 8080
+COPY server.js .
+CMD node server.js
 ```
 
 Execute o comando $ docker network ls nos nós workers e note que a rede não foi adicionada nos Workers ainda.
 
 ### Passo 11:
-Criação do Serviço com Apache que será instanciado no cluster docker swarm que criamos.
-Liste em cada um dos nós os containers que estão executando.
-Teste através do curl os servidores WEB que estão rodando.
+Validando as variáveis de ambiente
 
 ```markdown
-$ docker service create --name webservice1 --network ClusterNet --replicas 3 -p 5001:80 francois/apache-hostname
-$ docker service ls 
-$ docker ps
-$ curl --connect-timeout 3 http://<IP DO containerhostx>:5001
+$ eval $(sudo minikube docker-env)
+
 ```
 
 ### Passo 12:
-Testando o Balanceamento de Carga do docker Swarm através de um Script.
+Docker build na nossa aplicação JS
 
 ```markdown
-$ vi testLB.sh
-#!/bin/sh
-hosts="200.136.191.76 200.136.191.102 200.136.191.22"
-nHosts=`echo $hosts |wc -w`
-i=1
-clear
-while [ 1 ]; do
-if [ $i -eq 4 ]; then
-i=1
-fi
-h=`echo $hosts |cut -f$i -d" "`
-echo "Web Server: $h"
-curl --connect-timeout 3 http://$h:5001
-sleep 3
-clear
-((i=i+1))
-done
+$ docker build -t hello-node:v1 .
+$ docker images
 ```
-
-Colar dentro do arquivo. Lembre de alterar os ips em hosts, para os IPs das VMs de vocês ( containerhost01, containerhost02, containerhost03 )
 
 ### Passo 13:
-Abra um novo Shell e acesse a VM containerhost01.
-Então, dê permissão de execução ao Script e execute-o com os seguintes comandos.
+Fazendo o deployment da Aplicação
 
 ```markdown
-$ chmod +x testLB.sh
-$ ./testLB.sh
+$ kubectl run hello-node --image=hello-node:v1 --port=8080
+deployment "hello-node" created
+$ kubectl get pods
+$ kubectl get deployments
+
 ```
-
-Verificar a saída do comando. 
-
 ### Passo 14:
-Imaginando que nossos serviços estão recebendo muitas requisições e estão sobrecarregados.
-Iremos agora fazer um upgrade na quantidade de replicas deste serviço.
+Expondo a aplicação e Testando 
 
 ```markdown
-$ docker service scale webservice1=10
-$ docker service ps
-$ docker ps 
+$ kubectl expose deployment hello-node --type=NodePort
+service "hello-node" exposed
+$ kubectl get services
+$ curl $(sudo minikube service hello-node --url) 
 ```
 
 
