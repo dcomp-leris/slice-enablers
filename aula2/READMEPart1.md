@@ -39,8 +39,6 @@ $ vagrant ssh containerhost03
 Instalação do Docker em cada uma das três VMs.
 
 ```markdown
-$ sudo apt update
-$ sudo apt upgrade
 $ sudo apt -y install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
 $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 $ sudo apt-key fingerprint 0EBFCD88
@@ -88,7 +86,6 @@ $ docker swarm join –token SWMTKN-1-41eozb4h6ucm58pwv6zxvllhggniv6kbo92hyyhja9
 Adicionar os Workers no Cluster. Execute o comando gerado acima nas máquinas containerhost02 e containerhost03
 A seguinte mensagem deve aparecer: 
 
-
 ```markdown
 $ docker swarm join –token SWMTKN-1-41eozb4h6ucm58pwv6zxvllhggniv6kbo92hyyhja9z07whmtb-62q0t8pc373ff576xlbxp8bjj <IP DO Master:Porta>
 
@@ -100,7 +97,7 @@ Checando a criação dos Nodes. Digite no terminal do **containerhost01**.
 
 ```markdown
 $ docker node ls	
-$ docker node inspect
+$ docker node inspect containerhost01
 ```
 
 ### Passo 10:
@@ -131,7 +128,7 @@ Testando o Balanceamento de Carga do docker Swarm através de um Script.
 ```markdown
 $ vi testLB.sh
 #!/bin/sh
-hosts="200.136.191.76 200.136.191.102 200.136.191.22"
+hosts="192.168.50.2 192.168.50.3 192.168.50.4"
 nHosts=`echo $hosts |wc -w`
 i=1
 clear
@@ -167,11 +164,18 @@ Iremos agora fazer um upgrade na quantidade de replicas deste serviço.
 
 ```markdown
 $ docker service scale webservice1=10
-$ docker service ps
+$ docker service ls
 $ docker ps 
 ```
 
+### Passo 15:
+Deletando os serviços.
 
+```markdown
+$ docker service rm
+$ docker ps 
+$ docker service ls
+```  
 
 
 
