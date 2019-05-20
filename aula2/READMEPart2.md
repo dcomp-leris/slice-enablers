@@ -56,19 +56,18 @@ $ sudo kubectl get pod --all-namespaces
 Fazendo o deployment de uma pod.
 
 ```markdown
-$ kubectl run hello-minikube --image=gcr.io/google_containers/echoserver:1.4 --port=8080
+$ sudo kubectl run hello-minikube --image=gcr.io/google_containers/echoserver:1.4 --port=8080
 deployment "hello-minikube" created
-$ kubectl get pods
-$ kubectl get deployments
+$ sudo kubectl get pods
+$ sudo kubectl get deployments
 ```
 
 ### Passo 6:
 Expondo o Serviço.
 
 ```markdown
-$ kubectl expose deployment hello-minikube --type=NodePort
-service "hello-minikube" exposed
-$ kubectl get services
+$ sudo kubectl expose deployment hello-minikube --type=NodePort
+$ sudo kubectl get services
 ```
 
 ### Passo 7:
@@ -76,7 +75,7 @@ Testando o serviço criado
 
 
 ```markdown
-$ minikube service hello-minikube --url http://<IP DO containerhost01>:31226
+$ sudo minikube service hello-minikube --url
 $ curl $(sudo minikube service hello-minikube --url)
 ```
 
@@ -84,9 +83,9 @@ $ curl $(sudo minikube service hello-minikube --url)
 Encerrando o serviço e o deployment.
 
 ```markdown
-$ kubectl delete service,deployment hello-minikube
-$ kubectl get pods
-$ kubectl get services
+$ sudo kubectl delete service,deployment hello-minikube
+$ sudo kubectl get pods
+$ sudo kubectl get services
 ```
 
 ### Passo 9:
@@ -108,7 +107,6 @@ helloServer.listen(8080);
 ### Passo 10:
 Criando a imagem a partir de um DockerFile
 
-
 ```markdown
 $ vi Dockerfile
 
@@ -118,17 +116,7 @@ COPY server.js .
 CMD node server.js
 ```
 
-Execute o comando $ docker network ls nos nós workers e note que a rede não foi adicionada nos Workers ainda.
-
 ### Passo 11:
-Validando as variáveis de ambiente
-
-```markdown
-$ eval $(sudo minikube docker-env)
-
-```
-
-### Passo 12:
 Docker build na nossa aplicação JS
 
 ```markdown
@@ -136,7 +124,7 @@ $ docker build -t hello-node:v1 .
 $ docker images
 ```
 
-### Passo 13:
+### Passo 12:
 Fazendo o deployment da Aplicação
 
 ```markdown
@@ -146,13 +134,12 @@ $ kubectl get pods
 $ kubectl get deployments
 
 ```
-### Passo 14:
+### Passo 13:
 Expondo a aplicação e Testando 
 
 ```markdown
-$ kubectl expose deployment hello-node --type=NodePort
-service "hello-node" exposed
-$ kubectl get services
+$ sudo kubectl expose deployment hello-node --type=NodePort
+$ sudo kubectl get services
 $ curl $(sudo minikube service hello-node --url) 
 ```
 
