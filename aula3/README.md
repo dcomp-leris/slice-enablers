@@ -103,59 +103,42 @@ $ sudo docker run -d --name=netdata \
 ```
 
 ### Passo 12:
-Testando o Balanceamento de Carga do docker Swarm através de um Script.
+Criando a Imagem dos containeres com as ferramentas de geração de tráfego já pré-instaladas.
 
 ```markdown
-$ vi testLB.sh
-#!/bin/sh
-hosts="192.168.50.2 192.168.50.3 192.168.50.4"
-nHosts=`echo $hosts |wc -w`
-i=1
-clear
-while [ 1 ]; do
-if [ $i -eq 4 ]; then
-i=1
-fi
-h=`echo $hosts |cut -f$i -d" "`
-echo "Web Server: $h"
-curl --connect-timeout 3 http://$h:5001
-sleep 3
-clear
-((i=i+1))
-done
+$ cd slice-enablers/aula3/containers
+$ sudo docker build -t my-image .
+$ sudo docker run -it my-image bash
 ```
-
-Colar dentro do arquivo. Lembre de alterar os ips em hosts, para os IPs das VMs de vocês ( containerhost01, containerhost02, containerhost03 )
 
 ### Passo 13:
-Abra um novo Shell e acesse a VM containerhost01.
-Então, dê permissão de execução ao Script e execute-o com os seguintes comandos.
+Subam dois containeres a partir da imagem my-image criada anteriormente.
 
 ```markdown
-$ chmod +x testLB.sh
-$ ./testLB.sh
-```
+No container 1:
+$ iperf3 -s
 
-Verificar a saída do comando. 
+No container 2:
+$ iperf3 -c <IP do servidor>
+
+Testem os diversos parametros do iperf3
+-b -t -n etc.
+
+$ iperf3 man
+```
 
 ### Passo 14:
-Imaginando que nossos serviços estão recebendo muitas requisições e estão sobrecarregados.
-Iremos agora fazer um upgrade na quantidade de replicas deste serviço.
+Testando o programa stress-ng para aumentar o uso de cpu, memória e disco. 
 
 ```markdown
-$ docker service scale webservice1=10
-$ docker service ls
-$ docker ps 
+CPU
+$ stress-ng -c 1 -l 40% -t 5m
+Memória
+$ stress-ng -c 1 -l 15% --io 1 --hdd-bytes 10m --vm 1 --vm-bytes 10% -t 10m
+
+Manual stress-ng
+$ stress-ng --help
 ```
-
-### Passo 15:
-Deletando os serviços.
-
-```markdown
-$ docker service rm
-$ docker ps 
-$ docker service ls
-```  
 
 
 
