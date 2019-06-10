@@ -3,18 +3,19 @@
 Passo a Passo do Hands-On de Prometheus, Grafana, NetData e Geradores de Tráfego para a disciplina de Tópicos Avançados em Redes de Computadores e Sistemas Distribuídos 2019. 
 
 ### Passo 1: 
-Subir a vm que será utilizada nesta Aula.  
+Acessar a VM que está em um de nossos servidores!
 
 ```markdown
-$ cd slice-enablers/aula3
-$ vagrant status 
-$ vagrant up
+$ cd slice-enablers/aula3/chaves
+$ chmod 400 private_key_vm* 
+$ sh acessar.sh <NUMERO DO GRUPO>
 ```
 
 ### Passo 2:
 Verificar o conteúdo do arquivo prometheus.yml e Dockerfile.
 
 ```markdown
+$ cd slice-enablers/aula3
 $ vi prometheus.yml
 $ cat Dockerfile
 ```
@@ -32,8 +33,6 @@ Verificar se o Prometheus está funcionando corretamente.
 
 ```markdown
 No browser:
-$ localhost:<PORTA>
-ou
 $ <IP>:<PORTA>
 ```
 
@@ -60,8 +59,6 @@ Acessem o dashboard do Grafana.
 
 ```markdown
 No browser:
-$ localhost:<3000>
-ou
 $ <IP>:<3000>
 
 user: admin
@@ -103,7 +100,7 @@ $ sudo docker run -d --name=netdata \
 ```
 
 ### Passo 12:
-Criando a Imagem dos containeres com as ferramentas de geração de tráfego já pré-instaladas.
+Criando a Imagem dos containers com as ferramentas de geração de tráfego já pré-instaladas.
 
 ```markdown
 $ cd slice-enablers/aula3/containers
