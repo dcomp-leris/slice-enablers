@@ -16,7 +16,7 @@ Verificar o conteúdo do arquivo prometheus.yml e Dockerfile.
 
 ```markdown
 $ cd slice-enablers/aula3
-$ vi prometheus.yml
+$ sudo vi prometheus.yml
 $ cat Dockerfile
 ```
 
@@ -80,7 +80,7 @@ Adicionando Dashboards prontos no Grafana.
 
 ```markdown
 Procurem por Import Dashboard no Grafana. 
-- Adicionem os Dashboards com os seguintes IDs: 193, 1860 e 3662.
+- Adicionem os Dashboards com os seguintes IDs: 193, 893, 1860 e 3662.
 - Não esqueçam de selecionar como Data Source o Prometheus.
 ```
 
@@ -88,15 +88,7 @@ Procurem por Import Dashboard no Grafana.
 Iniciando o container de monitoramento do NetData. Para checar a instalação acessem no Browser: <IP>:<19999>
 
 ```markdown
-$ sudo docker run -d --name=netdata \
-  -p 19999:19999 \
-  --restart=always \ 
-  -v /proc:/host/proc:ro \
-  -v /sys:/host/sys:ro \
-  -v /var/run/docker.sock:/var/run/docker.sock:ro \
-  --cap-add SYS_PTRACE \
-  --security-opt apparmor=unconfined \
-  netdata/netdata
+$ sudo docker run -d --name=netdata -p 19999:19999 --restart=always -v /proc:/host/proc:ro -v /sys:/host/sys:ro -v /var/run/docker.sock:/var/run/docker.sock:ro --cap-add SYS_PTRACE --security-opt apparmor=unconfined netdata/netdata
 ```
 
 ### Passo 12:
